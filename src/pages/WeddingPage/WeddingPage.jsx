@@ -2,19 +2,19 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 // Index de Secciones para el Guest Journey Inteligente
-import HeroSection from './sections/HeroSection';
-import StorySection from './sections/StorySection';
-import GallerySection from './sections/GallerySection';
-import LocationSection from './sections/LocationSection';
-import TimelineSection from './sections/TimelineSection';
-import DressCodeSection from './sections/DressCodeSection';
-import AccommodationSection from './sections/AccommodationSection';
-import RSVPSection from './sections/RSVPSection';
-import InteractiveSection from './sections/InteractiveSection';
-import GiftsSection from './sections/GiftsSection';
-import FAQSection from './sections/FAQSection';
+import HeroSection from './components/HeroSection/HeroSection';
+import StorySection from './components/StorySection/StorySection';
+import GallerySection from './components/GallerySection/GallerySection';
+import LocationSection from './components/LocationSection/LocationSection';
+import TimelineSection from './components/TimelineSection/TimelineSection';
+import DressCodeSection from './components/DressCodeSection/DressCodeSection';
+import AccommodationSection from './components/AccommodationSection/AccommodationSection';
+import RSVPSection from './components/RSVPSection/RSVPSection';
+import InteractiveSection from './components/InteractiveSection/InteractiveSection';
+import GiftsSection from './components/GiftsSection/GiftsSection';
+import FAQSection from './components/FAQSection/FAQSection';
 
-export default function WeddingPage() {
+export default function WeddingPage({ guestData }) {
    return (
       <motion.div
          initial={{ opacity: 0, y: 50 }}
@@ -53,7 +53,7 @@ export default function WeddingPage() {
          <FAQSection />
 
          {/* 11. MÓDULO CUESTIONARIO RSVP ESTRATÉGICO (Al final como ancla) */}
-         <div id="asistencia"><RSVPSection /></div>
+         <div id="asistencia"><RSVPSection guestData={guestData} /></div>
 
          {/* FOOTER */}
          <footer className="w-full text-center py-12 text-[#999] bg-[#fdfbf9] mt-20 border-t border-black/5">

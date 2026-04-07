@@ -5,7 +5,7 @@
  */
 import React, { useState, useEffect, useRef } from 'react';
 import { FiMusic, FiVolumeX, FiMenu, FiX } from 'react-icons/fi';
-import { weddingConfig } from '../config';
+import { weddingConfig } from '../../config/config';
 
 export default function Navbar({ isVisible }) {
   const [isPlaying, setIsPlaying] = useState(false);

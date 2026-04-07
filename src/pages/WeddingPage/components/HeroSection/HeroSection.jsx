@@ -6,8 +6,8 @@
 import React from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 import { motion } from 'framer-motion';
-import CountdownWidget from '../widgets/CountdownWidget';
-import CalendarWidget from '../widgets/CalendarWidget';
+import CountdownWidget from '../../../../components/CountdownWidget/CountdownWidget';
+import CalendarWidget from '../../../../components/CalendarWidget/CalendarWidget';
 
 export default function HeroSection() {
   const targetDate = '2026-09-12T12:00:00';
