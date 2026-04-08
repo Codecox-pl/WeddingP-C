@@ -24,30 +24,44 @@ export default function GiftsSection() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mx-auto">
                {/* Lluvia de sobres / Cuenta Bancaria */}
                <div className="bg-white p-10 shadow-md border border-black/5 flex flex-col items-center justify-between">
-                  <h4 className="font-sans text-[10px] uppercase tracking-[3px] text-accent font-bold mb-4">Transferencia</h4>
-                  <div className="mb-6 w-full text-center">
-                     <p className="font-serif text-[22px] mb-2 text-text-primary bg-gray-50 py-1">BCP - Cuenta Corriente</p>
-                     <p className="font-sans text-text-secondary font-mono tracking-widest text-lg">[TU_CUENTA_AQUI]</p>
-                     <p className="font-sans text-[10px] uppercase tracking-wider text-gray-500 mt-2">Titulares: [TU_NOMBRE_AQUI]</p>
+                  <h4 className="font-sans text-[10px] uppercase tracking-[3px] text-accent font-bold mb-6">Transferencia</h4>
+                  <div className="mb-6 w-full text-center flex flex-col items-center">
+                     <img src="/bcp-logo.png" alt="Logo BCP" className="h-8 lg:h-10 object-contain mb-4" />
+
+                     <div className="w-full bg-gray-50 py-3 px-2 rounded-sm mb-3 border border-gray-100">
+                        <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">Cuenta BCP Soles</p>
+                        <p className="font-sans text-text-primary font-mono tracking-[0.15em] text-lg font-medium">19194674634041</p>
+                     </div>
+
+                     <div className="w-full bg-gray-50 py-3 px-2 rounded-sm mb-4 border border-gray-100">
+                        <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">Cuenta Interbancaria</p>
+                        <p className="font-sans text-text-primary font-mono tracking-[0.05em] sm:tracking-[0.1em] text-sm sm:text-base font-medium">00219119467463404156</p>
+                     </div>
+
+                     <p className="font-sans text-[13px] uppercase tracking-wider text-text-secondary">Titular: <span className="font-semibold text-text-primary mt-1 block sm:inline">Patrick Luis Muñoz</span></p>
                   </div>
 
-                  <div className="w-full flex-col flex items-center mt-2 border-t border-gray-100 pt-6">
-                     <p className="text-[10px] text-text-secondary uppercase tracking-widest mb-3">Envíos online sin comisión:</p>
-                     <button className="flex items-center gap-2 px-8 py-3 bg-[#00457C] text-white font-sans text-xs tracking-widest uppercase hover:bg-[#003087] transition-colors rounded-sm shadow-md">
-                        <SiPaypal className="text-lg" /> PayPal
-                     </button>
-                  </div>
+
                </div>
                {/* Mesa Virtual */}
-               <div className="bg-white p-10 shadow-md border border-black/5 flex flex-col justify-center items-center">
-                  <h4 className="font-sans text-[10px] uppercase tracking-[3px] text-accent font-bold mb-4">Lista en Tiendas</h4>
-                  <p className="font-serif text-3xl mb-4 text-text-primary">Amazon / Zola</p>
-                  <p className="font-sans text-xs text-text-secondary leading-relaxed mb-8 max-w-[250px]">
-                     Para su mayor comodidad, hemos consolidado opciones directamente en portales internacionales de compra.
-                  </p>
-                  <button className="w-full sm:w-auto px-8 py-3 bg-transparent border border-[#a68c7c] text-[#a68c7c] font-sans text-[10px] tracking-widest uppercase hover:bg-[#a68c7c] hover:text-white transition-colors">
-                     Ver Mesa de Regalos
-                  </button>
+               <div className="bg-white p-10 shadow-md border border-black/5 flex flex-col items-center justify-between">
+                  <h4 className="font-sans text-[10px] uppercase tracking-[3px] text-accent font-bold mb-6">Billeteras Digitales</h4>
+                  <div className="mb-6 w-full text-center flex flex-col items-center">
+                     <img src="/yape-plin-logo.png" alt="Plin y Yape" className="h-[60px] lg:h-[70px] object-contain mb-4 mix-blend-multiply" />
+
+                     <div className="w-full flex flex-col sm:flex-row gap-3 mb-4">
+                        <div className="flex-1 bg-gray-50 py-3 px-2 rounded-sm border border-gray-100 flex flex-col justify-center">
+                           <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">PLIN</p>
+                           <p className="font-sans text-text-primary font-mono tracking-[0.1em] text-sm lg:text-base font-medium">991995630</p>
+                        </div>
+                        <div className="flex-1 bg-gray-50 py-3 px-2 rounded-sm border border-gray-100 flex flex-col justify-center">
+                           <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">YAPE</p>
+                           <p className="font-sans text-text-primary font-mono tracking-[0.1em] text-sm lg:text-base font-medium">917812695</p>
+                        </div>
+                     </div>
+
+                     <p className="font-sans text-[10px] uppercase tracking-wider text-text-secondary">Titulares: <span className="font-semibold text-text-primary mt-1 flex sm:inline justify-center">Claudia y Patrick</span></p>
+                  </div>
                </div>
 
 

@@ -17,7 +17,7 @@ export default function App() {
   };
 
   return (
-    <div className={`relative min-h-screen w-full bg-wedding-bg max-w-[100vw] ${(!isAuthenticated || !isFinished) ? 'flex flex-col items-center justify-center h-screen' : ''}`}>
+    <div className={`relative min-h-screen w-full bg-wedding-bg overflow-x-hidden ${(!isAuthenticated || !isFinished) ? 'flex flex-col items-center justify-center h-screen' : ''}`}>
       {!isAuthenticated && (
          <LoginModal onAuthenticated={handleAuthenticated} />
       )}
