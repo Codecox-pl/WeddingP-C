@@ -46,8 +46,8 @@ export default function WeddingPage({ guestData }) {
          {/* 8. MÓDULO ALOJAMIENTO EXTERNO & TURISMO */}
          <AccommodationSection />
 
-         {/* 9. MÓDULO INTERACTIVO & PLAYLIST SPOTIFY */}
-         <InteractiveSection />
+         {/* 9. MÓDULO INTERACTIVO & GUESTBOOK */}
+         <InteractiveSection guestData={guestData} />
 
          {/* 10. MÓDULO PREGUNTAS FRECUENTES (FAQ) */}
          <FAQSection />

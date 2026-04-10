@@ -28,7 +28,7 @@ export default function RSVPSection({ guestData }) {
       if (API_URL && row) {
         await fetch(API_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({
             action: 'rsvp',
             row: row,

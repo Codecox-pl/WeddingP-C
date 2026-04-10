@@ -20,9 +20,18 @@ function handleResponse(e) {
        // Manejo interno para POST o preflight en caso necesario
     }
 
-    // Identificar acción: 'verify' (para Login) o 'rsvp' (para formulario)
-    var action = e.parameter.action;
+    // Identificar la acción y el payload de forma universal
+    var payload = {};
+    if (e.postData && e.postData.contents) {
+        try {
+            payload = JSON.parse(e.postData.contents);
+        } catch(err) {}
+    } else {
+        payload = e.parameter;
+    }
     
+    // La acción puede venir en el JSON body o en la URL
+    var action = e.parameter.action || payload.action;
     // Abrir la hoja activa
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Invitados");
 
@@ -50,14 +59,7 @@ function handleResponse(e) {
              .setMimeType(ContentService.MimeType.JSON);
              
     } else if (action === "rsvp") {
-      // Para POST form data
-      var payload;
-      if (e.postData && e.postData.contents) {
-         payload = JSON.parse(e.postData.contents);
-      } else {
-         payload = e.parameter;
-      }
-
+      // payload ya fue decodificado arriba
       var row = payload.row;       // la fila extraída durante el 'verify'
       var status = payload.status; // "Sí, Asistiré" o "No, Gracias"
       var extraInfo = payload.extraInfo || ""; 
@@ -74,6 +76,25 @@ function handleResponse(e) {
       } else {
         throw new Error("No se envió fila para actualizar.");
       }
+      
+    } else if (action === "guestbook") {
+      // payload ya fue decodificado arriba
+      var name = payload.name;
+      var message = payload.message;
+      
+      // Auto-crear la pestaña del libro de visitas si no existe
+      var guestbookSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Guestbook");
+      if (!guestbookSheet) {
+          guestbookSheet = SpreadsheetApp.getActiveSpreadsheet().insertSheet("Guestbook");
+          guestbookSheet.appendRow(["Fecha", "Nombre", "Mensaje"]);
+          guestbookSheet.getRange("A1:C1").setFontWeight("bold"); // Poner los títulos en negrita
+      }
+      
+      var date = new Date().toLocaleString("es-PE", {timeZone: "America/Lima"});
+      guestbookSheet.appendRow([date, name, message]);
+      
+      return ContentService.createTextOutput(JSON.stringify({ success: true }))
+             .setMimeType(ContentService.MimeType.JSON);
     }
     
     return ContentService.createTextOutput(JSON.stringify({ success: false, error: "Acción desconocida" }))
