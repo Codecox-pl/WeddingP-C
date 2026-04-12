@@ -59,10 +59,6 @@ export default function WeddingPage({ guestData }) {
          <footer className="w-full text-center py-12 text-[#999] bg-[#fdfbf9] mt-20 border-t border-black/5">
             <p className="font-sans text-[10px] uppercase tracking-[3px] mb-2">Gracias por formar parte de nuestra historia</p>
             <p className="font-serif text-3xl italic mb-6 text-text-primary">Patrick & Claudia</p>
-            <div className="flex justify-center gap-6 text-[10px] font-sans uppercase tracking-[2px] mb-4 text-[#888]">
-               <a href="#" className="hover:text-accent transition-colors">Instagram Oficial</a>
-               <a href="#" className="hover:text-accent transition-colors">Tel de Contacto</a>
-            </div>
             <p className="font-sans text-[8px] uppercase tracking-widest text-gray-400 mt-6 md:mt-10">© 2026 PATRICK & CLAUDIA. Hecho por y para el amor ♥.</p>
          </footer>
       </motion.div>

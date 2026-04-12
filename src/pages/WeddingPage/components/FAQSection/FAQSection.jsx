@@ -21,12 +21,12 @@ export default function FAQSection() {
    const onToggle = (idx) => setOpenIdx(openIdx === idx ? null : idx);
 
    return (
-      <section className="bg-transparent py-24 px-6 md:px-12 border-t border-black/5">
+      <section className="bg-transparent py-12 md:py-24 px-6 md:px-12 border-t border-black/5">
          <div className="max-w-4xl mx-auto">
-            <h2 className="md:text-center font-serif mb-16 text-text-primary justify-center text-3xl md:text-5xl flex flex-wrap justify-center items-center gap-2 md:gap-4 text-center px-2">
-               <GiPenguin className="text-2xl md:text-4xl text-accent opacity-80" />
-               <span className="leading-tight break-words max-w-full">F.A.Q.</span>
-               <GiPenguin className="text-2xl md:text-4xl text-accent opacity-80 scale-x-[-1]" />
+            <h2 className="font-serif mb-10 md:mb-16 text-text-primary text-[32px] md:text-5xl lg:text-6xl flex flex-nowrap justify-center items-center gap-2 md:gap-4 text-center px-2">
+               <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 shrink-0" />
+               <span className="leading-tight whitespace-normal min-w-0 text-center">F.A.Q.</span>
+               <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 scale-x-[-1] shrink-0" />
             </h2>
 
             <div className="space-y-4">

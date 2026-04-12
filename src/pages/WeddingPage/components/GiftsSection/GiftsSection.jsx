@@ -26,7 +26,7 @@ export default function GiftsSection() {
                <div className="bg-white p-10 shadow-md border border-black/5 flex flex-col items-center justify-between">
                   <h4 className="font-sans text-[10px] uppercase tracking-[3px] text-accent font-bold mb-6">Transferencia</h4>
                   <div className="mb-6 w-full text-center flex flex-col items-center">
-                     <img src="/bcp-logo.png" alt="Logo BCP" className="h-8 lg:h-10 object-contain mb-4" />
+                     <img src="https://lh3.googleusercontent.com/d/1KMnsmFNCCeeT0SQ4F4Uv-hu2ezQ2-okH" alt="Logo BCP" className="h-8 lg:h-10 object-contain mb-4" />
 
                      <div className="w-full bg-gray-50 py-3 px-2 rounded-sm mb-3 border border-gray-100">
                         <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">Cuenta BCP Soles</p>
@@ -47,7 +47,7 @@ export default function GiftsSection() {
                <div className="bg-white p-10 shadow-md border border-black/5 flex flex-col items-center justify-between">
                   <h4 className="font-sans text-[10px] uppercase tracking-[3px] text-accent font-bold mb-6">Billeteras Digitales</h4>
                   <div className="mb-6 w-full text-center flex flex-col items-center">
-                     <img src="/yape-plin-logo.png" alt="Plin y Yape" className="h-[60px] lg:h-[70px] object-contain mb-4 mix-blend-multiply" />
+                     <img src="https://lh3.googleusercontent.com/d/1lUeCgA340m2kjk8pVtoZ07D7bQkqIzA5" alt="Plin y Yape" className="h-[60px] lg:h-[70px] object-contain mb-4 mix-blend-multiply" />
 
                      <div className="w-full flex flex-col sm:flex-row gap-3 mb-4">
                         <div className="flex-1 bg-gray-50 py-3 px-2 rounded-sm border border-gray-100 flex flex-col justify-center">

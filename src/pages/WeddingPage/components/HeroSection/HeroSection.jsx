@@ -24,7 +24,7 @@ export default function HeroSection() {
     <section className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: 'url("/penguins_background.png")', filter: 'brightness(0.75)' }}
+        style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/d/1_Ro6x72p1OiEEJuqnkW_0RqQMc299rMx")', filter: 'brightness(0.75)' }}
       />
       <div className="absolute inset-0 bg-black/10" />
       <div className="relative z-10 text-center text-white px-4 flex flex-col items-center translate-y-[-5%]">

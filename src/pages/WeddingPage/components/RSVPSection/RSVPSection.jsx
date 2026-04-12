@@ -3,23 +3,34 @@
  * @description Módulo vital para la planificación: "RSVP Inteligente". Captura asistencia, 
  * necesidades alimentarias particulares (alergias/celiaquía/veganos) y transporte requerido.
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GiPenguin } from 'react-icons/gi';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function RSVPSection({ guestData }) {
-  const [status, setStatus] = useState('Sí, ahí estaremos.');
-  const [extraInfo, setExtraInfo] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-
   // Fallback seguro si no hay dato
   const name = guestData?.name || '';
   const passes = guestData?.passes || 1;
   const row = guestData?.row;
 
+  const [status, setStatus] = useState(passes === 1 ? 'Sí, ahí estaré.' : 'Sí, ahí estaremos.');
+  const [extraInfo, setExtraInfo] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [whatsappLink, setWhatsappLink] = useState('');
+
+  // Sincronizar el estado por defecto cuando llega o cambia el número de pases
+  useEffect(() => {
+    setStatus(passes === 1 ? 'Sí, ahí estaré.' : 'Sí, ahí estaremos.');
+  }, [passes]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+
+    // Si el usuario tiene 1 pase, o no marca que irán todos, no debería enviar acompañantes
+    const showExtraInfo = passes > 1 && status === 'Sí, ahí estaremos.';
+    const submitExtraInfo = showExtraInfo ? extraInfo : '';
 
     try {
       const API_URL = import.meta.env.VITE_SCRIPT_URL;
@@ -33,7 +44,7 @@ export default function RSVPSection({ guestData }) {
             action: 'rsvp',
             row: row,
             status: status,
-            extraInfo: extraInfo,
+            extraInfo: submitExtraInfo,
           })
         });
       } else {
@@ -45,12 +56,17 @@ export default function RSVPSection({ guestData }) {
       setIsLoading(false);
 
       // Redirigir a WhatsApp
-      // Nota: Configura aquí el número (incluyendo código de país sin el + ej: 51987654321)
       const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "1234567890";
-      const message = `Hola, soy ${name}.\nQuiero confirmar mi respuesta de asistencia:\n*${status}*\nPases asignados: ${passes}\nComentarios: ${extraInfo}`;
+      const message = `Hola, soy ${name}.\nQuiero confirmar mi respuesta de asistencia:\n*${status}*\nPases asignados: ${passes}${showExtraInfo && submitExtraInfo ? `\nAcompañantes: ${submitExtraInfo}` : ''}`;
+      
+      const generatedUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      setWhatsappLink(generatedUrl);
 
-      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
+      setIsSuccess(true);
+      setIsLoading(false);
+
+      // Intento de apertura automática (suele bloquearse en Safari/iPhones por ser asíncrono)
+      window.open(generatedUrl, '_blank');
 
     } catch (error) {
       console.error(error);
@@ -68,7 +84,7 @@ export default function RSVPSection({ guestData }) {
           <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 scale-x-[-1] shrink-0" />
         </h2>
 
-        <p className="font-sans text-[11px] leading-[1.5] text-red-500 mb-6 tracking-[2px] uppercase font-[700] bg-red-50 py-2 rounded-sm w-max mx-auto px-6 border border-red-100">
+        <p className="font-sans text-[10px] sm:text-[11px] leading-[1.6] text-red-500 mb-6 tracking-[1px] sm:tracking-[2px] uppercase font-[700] bg-red-50 py-3 px-4 rounded-sm inline-block max-w-full break-words border border-red-100">
           Por favor, confirma antes del 15 de Septiembre
         </p>
 
@@ -93,36 +109,60 @@ export default function RSVPSection({ guestData }) {
                   onChange={(e) => setStatus(e.target.value)}
                   className="w-full border-b border-[#e5d5cb] py-2 focus:outline-none focus:border-accent bg-transparent text-[16px] leading-[1.5] font-[400] text-text-secondary pb-3"
                 >
-                  <option>Sí, ahí estaremos.</option>
-                  <option>Sí, iré pero yo solo.</option>
-                  <option>Con dolor en mi corazón, no puedo.</option>
+                  {passes === 1 ? (
+                    <>
+                      <option>Sí, ahí estaré.</option>
+                      <option>Con dolor en mi corazón, no puedo.</option>
+                    </>
+                  ) : (
+                    <>
+                      <option>Sí, ahí estaremos.</option>
+                      <option>Sí iré, pero sol@.</option>
+                      <option>Con dolor en mi corazón, no podemos.</option>
+                    </>
+                  )}
                 </select>
               </div>
             </div>
 
-            <div className="mb-10 w-full">
-              <label className="block text-[11px] leading-[1.5] font-[700] uppercase tracking-widest text-text-secondary mb-4">Nombres de Acompañantes</label>
-              <input
-                type="text"
-                value={extraInfo}
-                onChange={(e) => setExtraInfo(e.target.value)}
-                className="w-full bg-[#faf9f8] border border-gray-100 p-4 focus:outline-none focus:border-accent text-[14px] leading-[1.4] font-[400] text-text-secondary"
-                placeholder="Ej: Acompañante es Claudia..."
-              />
-            </div>
+            {(passes > 1 && status === 'Sí, ahí estaremos.') && (
+              <div className="mb-10 w-full animate-fade-in opacity-100 transition-opacity duration-300">
+                <label className="block text-[11px] leading-[1.5] font-[700] uppercase tracking-widest text-text-secondary mb-4">Nombres de Acompañante</label>
+                <input
+                  type="text"
+                  value={extraInfo}
+                  onChange={(e) => setExtraInfo(e.target.value)}
+                  className="w-full bg-[#faf9f8] border border-gray-100 p-4 focus:outline-none focus:border-accent text-[14px] leading-[1.4] font-[400] text-text-secondary"
+                  placeholder="Ej: Acompañante es Claudia..."
+                  required
+                />
+              </div>
+            )}
 
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-5 bg-[#bfa18f] hover:bg-[#a68c7c] text-white font-sans text-[11px] leading-[1.5] font-[700] tracking-[4px] uppercase transition-colors shadow-sm disabled:opacity-50 flex justify-center items-center"
+              className="w-full py-5 mt-4 bg-[#bfa18f] hover:bg-[#a68c7c] text-white font-sans text-[11px] leading-[1.5] font-[700] tracking-[4px] uppercase transition-colors shadow-sm disabled:opacity-50 flex justify-center items-center"
             >
               {isLoading ? 'Enviando...' : 'Confirmar y Enviar WhatsApp'}
             </button>
           </form>
         ) : (
-          <div className="border border-green-200 bg-green-50 p-8 rounded-lg mt-8">
-            <p className="text-green-800 font-medium text-lg mb-2">¡Completado!</p>
-            <p className="text-green-700 text-sm">Tu confirmación se ha procesado exitosamente. En un momento se debe abrir la ventana de WhatsApp para enviar el mensaje.</p>
+          <div className="border border-green-200 bg-green-50 p-8 rounded-lg mt-8 flex flex-col items-center">
+            <p className="text-green-800 font-medium text-lg mb-2">¡Confirmación Guardada!</p>
+            <p className="text-green-700 text-[13px] mb-6 font-sans">
+               Tus datos se registraron correctamente en nuestra lista oficial. Para culminar el proceso, por favor presiona el botón para enviarnos tu confirmación por WhatsApp.
+            </p>
+            {whatsappLink && (
+               <a 
+                 href={whatsappLink}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="flex justify-center items-center gap-3 w-full max-w-xs py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white font-sans text-[11px] font-[700] tracking-[3px] uppercase transition-colors rounded-sm shadow-md"
+               >
+                 <FaWhatsapp className="text-lg" /> Ir a WhatsApp
+               </a>
+            )}
           </div>
         )}
       </div>
