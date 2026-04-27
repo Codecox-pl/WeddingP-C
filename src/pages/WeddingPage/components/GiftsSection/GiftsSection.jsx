@@ -26,16 +26,16 @@ export default function GiftsSection() {
                <div className="bg-white p-10 shadow-md border border-black/5 flex flex-col items-center justify-between">
                   <h4 className="font-sans text-[10px] uppercase tracking-[3px] text-accent font-bold mb-6">Transferencia</h4>
                   <div className="mb-6 w-full text-center flex flex-col items-center">
-                     <img src="/bcp-logo.png" alt="Logo BCP" className="h-8 lg:h-10 object-contain mb-4" />
+                     <img src="https://res.cloudinary.com/dlpxjxb9k/image/upload/v1777256489/bcp-logo_ectju7.png" alt="Logo BCP" className="h-8 lg:h-10 object-contain mb-4" />
 
                      <div className="w-full bg-gray-50 py-3 px-2 rounded-sm mb-3 border border-gray-100">
                         <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">Cuenta BCP Soles</p>
-                        <p className="font-sans text-text-primary tracking-[0.15em] text-lg font-medium">19194674634041</p>
+                        <p className="font-sans text-text-primary tracking-[0.15em] text-lg font-medium">{import.meta.env.VITE_BANK_BCP_ACCOUNT || "19194674634041"}</p>
                      </div>
 
                      <div className="w-full bg-gray-50 py-3 px-2 rounded-sm mb-4 border border-gray-100">
                         <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">Cuenta Interbancaria</p>
-                        <p className="font-sans text-text-primary tracking-[0.05em] sm:tracking-widest text-sm sm:text-base font-medium">00219119467463404156</p>
+                        <p className="font-sans text-text-primary tracking-[0.05em] sm:tracking-widest text-sm sm:text-base font-medium">{import.meta.env.VITE_BANK_BCP_CCI || "00219119467463404156"}</p>
                      </div>
 
                      <p className="font-sans text-[13px] uppercase tracking-wider text-text-secondary">Titular: <span className="font-semibold text-text-primary mt-1 block sm:inline">Patrick Luis Muñoz</span></p>
@@ -47,16 +47,16 @@ export default function GiftsSection() {
                <div className="bg-white p-10 shadow-md border border-black/5 flex flex-col items-center justify-between">
                   <h4 className="font-sans text-[10px] uppercase tracking-[3px] text-accent font-bold mb-6">Billeteras Digitales</h4>
                   <div className="mb-6 w-full text-center flex flex-col items-center">
-                     <img src="/yape-plin-logo.png" alt="Plin y Yape" className="h-15 lg:h-17.5 object-contain mb-4 mix-blend-multiply" />
+                     <img src="https://res.cloudinary.com/dlpxjxb9k/image/upload/v1777256669/yape-plin-logo_pujhgu.png" alt="Plin y Yape" className="h-15 lg:h-17.5 object-contain mb-4 mix-blend-multiply" />
 
                      <div className="w-full flex flex-col sm:flex-row gap-3 mb-4">
                         <div className="flex-1 bg-gray-50 py-3 px-2 rounded-sm border border-gray-100 flex flex-col justify-center">
                            <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">PLIN</p>
-                           <p className="text-text-primary font-mono tracking-widest text-sm lg:text-base font-medium">991995630</p>
+                           <p className="text-text-primary font-mono tracking-widest text-sm lg:text-base font-medium">{import.meta.env.VITE_BANK_PLIN || "991995630"}</p>
                         </div>
                         <div className="flex-1 bg-gray-50 py-3 px-2 rounded-sm border border-gray-100 flex flex-col justify-center">
                            <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">YAPE</p>
-                           <p className="font-sans text-text-primary tracking-widest text-sm lg:text-base font-medium">917812695</p>
+                           <p className="font-sans text-text-primary tracking-widest text-sm lg:text-base font-medium">{import.meta.env.VITE_BANK_YAPE || "917812695"}</p>
                         </div>
                      </div>
 

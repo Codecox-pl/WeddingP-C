@@ -4,10 +4,10 @@ export default function FamilySection() {
   return (
     <section className="bg-[#fcfbf9] py-20 md:py-32 px-6 border-t border-black/5 relative overflow-hidden">
       {/* Decorative subtle element */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-12 bg-accent/30"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-accent/30"></div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        
+
         {/* Intro */}
         <p className="font-sans text-[10px] md:text-xs uppercase tracking-[4px] text-accent mb-12 md:mb-16 font-bold">
           Con la bendición de Dios y nuestros padres
@@ -41,9 +41,9 @@ export default function FamilySection() {
 
         {/* Separator */}
         <div className="flex justify-center items-center gap-4 mb-20 opacity-50">
-           <div className="w-12 h-[1px] bg-accent"></div>
-           <div className="w-2 h-2 rounded-full border border-accent"></div>
-           <div className="w-12 h-[1px] bg-accent"></div>
+          <div className="w-12 h-px bg-accent"></div>
+          <div className="w-2 h-2 rounded-full border border-accent"></div>
+          <div className="w-12 h-px bg-accent"></div>
         </div>
 
         {/* Godparents */}
