@@ -17,7 +17,7 @@ export default function InteractiveSection({ guestData }) {
    const handleSubmit = async (e) => {
       e.preventDefault();
       if (!message.trim()) return;
-      
+
       setIsLoading(true);
       setFeedback(null);
 
@@ -64,12 +64,12 @@ export default function InteractiveSection({ guestData }) {
                <p className="font-sans text-[13px] text-text-secondary mb-8 leading-relaxed">
                   Siéntete libre de dejarnos un consejo, palabras de cariño o memorias graciosas antes del gran día. Prometemos leerlos todos la mañana de la boda.
                </p>
-               
+
                <form onSubmit={handleSubmit} className="space-y-5 font-sans border-t border-gray-100 pt-6">
-                  <textarea 
+                  <textarea
                      value={message}
                      onChange={(e) => setMessage(e.target.value)}
-                     className="w-full bg-[#fcfbf9] border border-gray-200 p-5 focus:outline-none focus:border-accent min-h-[140px] text-xs text-text-secondary rounded-sm resize-y" 
+                     className="w-full bg-[#fcfbf9] border border-gray-200 p-5 focus:outline-none focus:border-accent min-h-35 text-xs text-text-secondary rounded-sm resize-y"
                      placeholder="Tu mensaje más sincero (o gracioso) aquí..."
                      required
                      disabled={isLoading}
@@ -81,8 +81,8 @@ export default function InteractiveSection({ guestData }) {
                      </div>
                   )}
 
-                  <button 
-                     type="submit" 
+                  <button
+                     type="submit"
                      disabled={isLoading || !message.trim()}
                      className="w-full py-5 bg-[#e3d7cf] hover:bg-[#cca894] hover:text-white text-[#5c4a40] font-sans text-[10px] tracking-[4px] uppercase transition-colors rounded-sm shadow-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed"
                   >

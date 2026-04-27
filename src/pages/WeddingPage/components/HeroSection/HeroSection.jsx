@@ -24,11 +24,11 @@ export default function HeroSection() {
     <section className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/d/1_Ro6x72p1OiEEJuqnkW_0RqQMc299rMx")', filter: 'brightness(0.75)' }}
+        style={{ backgroundImage: 'url("/penguins_background.png")', filter: 'brightness(0.75)' }}
       />
       <div className="absolute inset-0 bg-black/10" />
       <div className="relative z-10 text-center text-white px-4 flex flex-col items-center translate-y-[-5%]">
-        <h1 className="text-[40px] leading-[1.1] font-[500] md:text-8xl font-serif mb-6 drop-shadow-md">Patrick & Claudia</h1>
+        <h1 className="text-[40px] leading-[1.1] font-medium md:text-8xl font-serif mb-6 drop-shadow-md">Patrick & Claudia</h1>
 
         {/* Widget Independiente del Contador */}
         <CountdownWidget targetDate={targetDate} />

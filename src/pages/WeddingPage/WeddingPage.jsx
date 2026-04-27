@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 // Index de Secciones para el Guest Journey Inteligente
 import HeroSection from './components/HeroSection/HeroSection';
+import FamilySection from './components/FamilySection/FamilySection';
 import StorySection from './components/StorySection/StorySection';
 import GallerySection from './components/GallerySection/GallerySection';
 import LocationSection from './components/LocationSection/LocationSection';
@@ -24,6 +25,9 @@ export default function WeddingPage({ guestData }) {
       >
          {/* 1. MÓDULO HERO & CUENTA REGRESIVA */}
          <HeroSection />
+
+         {/* 1.5 MÓDULO FAMILIA (PADRES Y PADRINOS) */}
+         <FamilySection />
 
          {/* 2. MÓDULO NUESTRA HISTORIA */}
          <div id="historia"><StorySection /></div>
