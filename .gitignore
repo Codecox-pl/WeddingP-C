@@ -1,6 +1,5 @@
 node_modules/
 dist/
-.env
-.env.*
+# Eliminamos .env de gitignore temporalmente para Cloudflare
 !.env.example
 .DS_Store
