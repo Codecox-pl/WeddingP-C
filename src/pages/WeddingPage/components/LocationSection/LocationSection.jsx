@@ -37,7 +37,7 @@ export default function LocationSection() {
   };
 
   return (
-    <section className="bg-white/40 py-12 md:py-20 px-6 sm:px-12 border-t border-b border-black/5" id="ubicacion">
+    <section className="bg-transparent py-12 md:py-20 px-6 sm:px-12 border-t border-b border-black/5" id="ubicacion">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="font-serif mb-6 md:mb-10 text-text-primary text-[32px] leading-[1.15] font-[500] md:text-5xl lg:text-6xl flex flex-nowrap justify-center items-center gap-2 md:gap-5 text-center px-2 w-full">
           <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 shrink-0" />
@@ -78,7 +78,7 @@ export default function LocationSection() {
               </button>
               <button
                 onClick={() => handleMapRedirect('waze', 'ceremonia')}
-                className="flex justify-center items-center gap-3 px-6 py-4 bg-[#bfa18f] text-white font-sans text-xs tracking-[3px] uppercase hover:bg-[#a68c7c] transition-colors rounded-sm shadow-md"
+                className="flex justify-center items-center gap-3 px-6 py-4 bg-accent text-white font-sans text-xs tracking-[3px] uppercase hover:bg-accent-hover transition-colors rounded-sm shadow-md"
               >
                 <FiNavigation className="text-lg" /> Waze
               </button>
@@ -109,7 +109,7 @@ export default function LocationSection() {
               </button>
               <button
                 onClick={() => handleMapRedirect('waze', 'recepcion')}
-                className="flex justify-center items-center gap-3 px-6 py-4 bg-[#bfa18f] text-white font-sans text-xs tracking-[3px] uppercase hover:bg-[#a68c7c] transition-colors rounded-sm shadow-md"
+                className="flex justify-center items-center gap-3 px-6 py-4 bg-accent text-white font-sans text-xs tracking-[3px] uppercase hover:bg-accent-hover transition-colors rounded-sm shadow-md"
               >
                 <FiNavigation className="text-lg" /> Waze
               </button>

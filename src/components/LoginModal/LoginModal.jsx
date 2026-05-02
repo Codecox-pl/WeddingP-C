@@ -105,7 +105,7 @@ export default function LoginModal({ onAuthenticated }) {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-4 mt-2 bg-[#bfa18f] hover:bg-[#a68c7c] text-white font-sans text-[11px] leading-normal font-bold tracking-[4px] uppercase transition-colors shadow-sm disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
+              className="w-full py-4 mt-2 bg-accent hover:bg-accent-hover text-white font-sans text-[11px] leading-normal font-bold tracking-[4px] uppercase transition-colors shadow-sm disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
             >
               {isLoading ? (
                 <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

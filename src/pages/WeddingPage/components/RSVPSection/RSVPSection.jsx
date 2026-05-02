@@ -76,7 +76,7 @@ export default function RSVPSection({ guestData }) {
   };
 
   return (
-    <section className="bg-white/80 py-16 md:py-24 px-4 sm:px-6 relative border-t border-black/5">
+    <section className="bg-[#fcfbf9] py-16 md:py-24 px-4 sm:px-6 relative border-t border-black/5">
       <div className="max-w-3xl mx-auto bg-white p-6 sm:p-10 md:p-14 shadow-2xl text-center border border-black/5 relative z-10">
         <h2 className="font-serif mb-4 text-text-primary text-[32px] leading-[1.15] font-medium md:text-5xl lg:text-6xl flex flex-nowrap justify-center items-center gap-2 md:gap-5 text-center px-2 w-full">
           <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 shrink-0" />
@@ -142,7 +142,7 @@ export default function RSVPSection({ guestData }) {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-5 mt-4 bg-[#bfa18f] hover:bg-[#a68c7c] text-white font-sans text-[11px] leading-normal font-bold tracking-[4px] uppercase transition-colors shadow-sm disabled:opacity-50 flex justify-center items-center"
+              className="w-full py-5 mt-4 bg-accent hover:bg-accent-hover text-white font-sans text-[11px] leading-normal font-bold tracking-[4px] uppercase transition-colors shadow-sm disabled:opacity-50 flex justify-center items-center"
             >
               {isLoading ? 'Enviando...' : 'Confirmar y Enviar WhatsApp'}
             </button>

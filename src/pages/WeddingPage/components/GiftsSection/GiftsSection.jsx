@@ -10,7 +10,7 @@ import { GiPenguin } from 'react-icons/gi';
 
 export default function GiftsSection() {
    return (
-      <section className="bg-white/60 py-12 md:py-24 px-6 border-t border-black/5" id="regalos">
+      <section className="bg-transparent py-12 md:py-24 px-6 border-t border-black/5" id="regalos">
          <div className="max-w-5xl mx-auto text-center">
             <h2 className="md:font-serif mb-6 text-text-primary text-3xl md:text-5xl flex flex-wrap justify-center items-center gap-2 md:gap-4 text-center px-2">
                <GiPenguin className="text-2xl md:text-4xl text-accent opacity-80" />

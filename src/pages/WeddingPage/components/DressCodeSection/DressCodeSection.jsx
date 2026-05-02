@@ -8,7 +8,7 @@ import { GiPenguin } from 'react-icons/gi';
 
 export default function DressCodeSection() {
   return (
-    <section className="py-12 md:py-24 px-6 sm:px-12 bg-[#eee2d7] border-t border-black/5">
+    <section className="py-12 md:py-24 px-6 sm:px-12 bg-[#fcfbf9] border-t border-black/5">
        <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-serif mb-4 text-text-primary text-[26px] leading-[1.15] font-[500] md:text-5xl lg:text-6xl flex flex-nowrap justify-center items-center gap-2 md:gap-5 text-center px-1 w-full">
             <GiPenguin className="text-[26px] md:text-5xl lg:text-6xl text-accent opacity-80 shrink-0" />

@@ -52,7 +52,7 @@ export default function InteractiveSection({ guestData }) {
    };
 
    return (
-      <section className="bg-white/80 py-24 px-6 border-t border-black/5">
+      <section className="bg-[#fcfbf9] py-24 px-6 border-t border-black/5">
          <div className="max-w-2xl mx-auto">
 
             {/* Libro de Visitas Digital */}
@@ -84,7 +84,7 @@ export default function InteractiveSection({ guestData }) {
                   <button
                      type="submit"
                      disabled={isLoading || !message.trim()}
-                     className="w-full py-5 bg-[#e3d7cf] hover:bg-[#cca894] hover:text-white text-[#5c4a40] font-sans text-[10px] tracking-[4px] uppercase transition-colors rounded-sm shadow-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+                     className="w-full py-5 bg-accent hover:bg-accent-hover text-white font-sans text-[10px] tracking-[4px] uppercase transition-colors rounded-sm shadow-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                      {isLoading ? 'Enviando paloma mensajera...' : 'Sellar mensaje en el libro'}
                   </button>

@@ -36,7 +36,8 @@ export default function TimelineSection() {
   ];
 
   return (
-    <section className="max-w-4xl mx-auto py-16 md:py-28 px-6">
+    <section className="bg-[#fcfbf9] border-t border-black/5 max-w-none w-full py-16 md:py-28 px-6">
+      <div className="max-w-4xl mx-auto">
        <h2 className="font-serif mb-12 md:mb-24 text-text-primary text-[32px] leading-[1.15] font-[500] md:text-5xl lg:text-6xl flex flex-nowrap justify-center items-center gap-2 md:gap-5 text-center px-2 w-full">
           <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 shrink-0" />
           <span className="leading-tight whitespace-normal min-w-0 text-center">El Cronograma</span>
@@ -60,6 +61,7 @@ export default function TimelineSection() {
              </div>
           ))}
        </div>
+      </div>
     </section>
   );
 }
