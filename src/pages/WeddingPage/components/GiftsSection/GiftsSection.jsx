@@ -26,7 +26,7 @@ export default function GiftsSection() {
                <div className="bg-white p-10 shadow-md border border-black/5 flex flex-col items-center justify-between">
                   <h4 className="font-sans text-[10px] uppercase tracking-[3px] text-accent font-bold mb-6">Transferencia</h4>
                   <div className="mb-6 w-full text-center flex flex-col items-center">
-                     <img src="https://res.cloudinary.com/dlpxjxb9k/image/upload/v1777256489/bcp-logo_ectju7.png" alt="Logo BCP" className="h-8 lg:h-10 object-contain mb-4" />
+                     <img src="https://res.cloudinary.com/dlpxjxb9k/image/upload/f_auto,q_auto,w_300/v1777256489/bcp-logo_ectju7.png" alt="Logo BCP" className="h-8 lg:h-10 object-contain mb-4" />
 
                      <div className="w-full bg-gray-50 py-3 px-2 rounded-sm mb-3 border border-gray-100">
                         <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">Cuenta BCP Soles</p>
@@ -47,7 +47,7 @@ export default function GiftsSection() {
                <div className="bg-white p-10 shadow-md border border-black/5 flex flex-col items-center justify-between">
                   <h4 className="font-sans text-[10px] uppercase tracking-[3px] text-accent font-bold mb-6">Billeteras Digitales</h4>
                   <div className="mb-6 w-full text-center flex flex-col items-center">
-                     <img src="https://res.cloudinary.com/dlpxjxb9k/image/upload/v1777256669/yape-plin-logo_pujhgu.png" alt="Plin y Yape" className="h-15 lg:h-17.5 object-contain mb-4 mix-blend-multiply" />
+                     <img src="https://res.cloudinary.com/dlpxjxb9k/image/upload/f_auto,q_auto,w_400/v1777256669/yape-plin-logo_pujhgu.png" alt="Plin y Yape" className="h-15 lg:h-17.5 object-contain mb-4 mix-blend-multiply" />
 
                      <div className="w-full flex flex-col sm:flex-row gap-3 mb-4">
                         <div className="flex-1 bg-gray-50 py-3 px-2 rounded-sm border border-gray-100 flex flex-col justify-center">
