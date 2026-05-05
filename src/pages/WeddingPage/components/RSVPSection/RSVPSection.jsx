@@ -142,7 +142,7 @@ export default function RSVPSection({ guestData }) {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-5 mt-4 bg-accent hover:bg-accent-hover text-white font-sans text-[11px] leading-normal font-bold tracking-[4px] uppercase transition-colors shadow-sm disabled:opacity-50 flex justify-center items-center"
+              className="w-full md:w-auto md:min-w-[350px] md:mx-auto py-5 px-10 mt-4 bg-accent hover:bg-accent-hover text-white font-sans text-[11px] leading-normal font-bold tracking-[4px] uppercase transition-colors shadow-sm disabled:opacity-50 flex justify-center items-center"
             >
               {isLoading ? 'Enviando...' : 'Confirmar y Enviar WhatsApp'}
             </button>

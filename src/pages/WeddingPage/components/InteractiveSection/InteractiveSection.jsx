@@ -84,7 +84,7 @@ export default function InteractiveSection({ guestData }) {
                   <button
                      type="submit"
                      disabled={isLoading || !message.trim()}
-                     className="w-full py-5 bg-accent hover:bg-accent-hover text-white font-sans text-[10px] tracking-[4px] uppercase transition-colors rounded-sm shadow-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+                     className="w-full md:w-auto md:min-w-[320px] md:mx-auto block py-5 px-8 bg-accent hover:bg-accent-hover text-white font-sans text-[10px] tracking-[4px] uppercase transition-colors rounded-sm shadow-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                      {isLoading ? 'Enviando paloma mensajera...' : 'Sellar mensaje en el libro'}
                   </button>

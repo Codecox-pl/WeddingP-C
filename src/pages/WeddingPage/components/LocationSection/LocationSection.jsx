@@ -91,11 +91,11 @@ export default function LocationSection() {
               <GiPartyPopper className="text-accent text-3xl" />
             </div>
 
-            <h4 className="font-sans text-[11px] leading-[1.5] font-[700] uppercase tracking-[4px] text-accent mb-3">Recepción</h4>
-            <h3 className="font-serif text-[22px] leading-[1.25] font-[500] md:text-3xl text-text-primary tracking-wide mb-4">La Estancia</h3>
+            <h4 className="font-sans text-[11px] leading-normal font-bold uppercase tracking-[4px] text-accent mb-3">Recepción</h4>
+            <h3 className="font-serif text-[22px] leading-tight font-medium md:text-3xl text-text-primary tracking-wide mb-4">La Estancia</h3>
             <div className="flex-1 flex flex-col justify-start items-center mt-2">
-              <p className="font-sans text-[16px] leading-[1.5] font-[400] md:text-lg text-text-secondary max-w-[280px]">
-                <strong className="text-text-primary font-[600] text-[16px] md:text-lg">El Milagro 540</strong><br />
+              <p className="font-sans text-[16px] leading-normal font-normal md:text-lg text-text-secondary max-w-70">
+                <strong className="text-text-primary font-semibold text-[16px] md:text-lg">El Milagro 540</strong><br />
                 Santa María 15137
               </p>
             </div>
