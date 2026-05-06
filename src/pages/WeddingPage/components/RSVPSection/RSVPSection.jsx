@@ -16,13 +16,35 @@ export default function RSVPSection({ guestData }) {
   const [status, setStatus] = useState(passes === 1 ? 'Sí, ahí estaré.' : 'Sí, ahí estaremos.');
   const [extraInfo, setExtraInfo] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [whatsappLink, setWhatsappLink] = useState('');
+  const [feedback, setFeedback] = useState(null);
+  const [isConfirmed, setIsConfirmed] = useState(false);
 
-  // Sincronizar el estado por defecto cuando llega o cambia el número de pases
+  // Sincronizar el estado de confirmación con la Base de Datos (Excel)
   useEffect(() => {
-    setStatus(passes === 1 ? 'Sí, ahí estaré.' : 'Sí, ahí estaremos.');
-  }, [passes]);
+    // Si el backend nos envía el campo status (incluso si está vacío)
+    if (guestData && 'status' in guestData) {
+      const backendStatus = guestData.status || '';
+      
+      if (backendStatus.trim() !== '') {
+        // Ya está confirmado en el Excel
+        setIsConfirmed(true);
+        setStatus(backendStatus);
+        if (row) localStorage.setItem(`rsvp_confirmed_row_${row}`, 'true');
+      } else {
+        // La celda en Excel está VACÍA. El gestor la borró para resetear el formulario.
+        setIsConfirmed(false);
+        setStatus(passes === 1 ? 'Sí, ahí estaré.' : 'Sí, ahí estaremos.');
+        if (row) localStorage.removeItem(`rsvp_confirmed_row_${row}`);
+      }
+    } else {
+      // Fallback por si usan el entorno local de pruebas (sin API)
+      if (row && localStorage.getItem(`rsvp_confirmed_row_${row}`)) {
+        setIsConfirmed(true);
+      } else {
+        setStatus(passes === 1 ? 'Sí, ahí estaré.' : 'Sí, ahí estaremos.');
+      }
+    }
+  }, [passes, row, guestData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,26 +74,30 @@ export default function RSVPSection({ guestData }) {
         await new Promise(r => setTimeout(r, 1000));
       }
 
-      setIsSuccess(true);
-      setIsLoading(false);
+      // Marcar como confirmado localmente
+      if (row) {
+        localStorage.setItem(`rsvp_confirmed_row_${row}`, 'true');
+      }
+      setIsConfirmed(true);
+
+      setFeedback({ type: 'success', text: '¡Datos guardados! Redirigiendo a WhatsApp...' });
 
       // Redirigir a WhatsApp
       const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "1234567890";
       const message = `Hola, soy ${name}.\nQuiero confirmar mi respuesta de asistencia:\n*${status}*\nPases asignados: ${passes}${showExtraInfo && submitExtraInfo ? `\nAcompañantes: ${submitExtraInfo}` : ''}`;
 
       const generatedUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-      setWhatsappLink(generatedUrl);
-
-      setIsSuccess(true);
-      setIsLoading(false);
 
       // Intento de apertura automática (suele bloquearse en Safari/iPhones por ser asíncrono)
       window.open(generatedUrl, '_blank');
 
     } catch (error) {
       console.error(error);
-      alert('Hubo un error enviando la confirmación. Por favor intenta mediante WhatsApp directo.');
+      setFeedback({ type: 'error', text: 'Hubo un error de conexión. Por favor intenta de nuevo.' });
+    } finally {
       setIsLoading(false);
+      // Limpiar el mensaje de éxito después de 8 segundos
+      setTimeout(() => setFeedback(null), 8000);
     }
   };
 
@@ -84,85 +110,91 @@ export default function RSVPSection({ guestData }) {
           <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 scale-x-[-1] shrink-0" />
         </h2>
 
-        <p className="font-sans text-[10px] sm:text-[11px] leading-[1.6] text-red-500 mb-6 tracking-[1px] sm:tracking-[2px] uppercase font-bold bg-red-50 py-3 px-4 rounded-sm inline-block max-w-full wrap-break-word border border-red-100">
-          Por favor, confirma antes del 15 de Septiembre
-        </p>
-
-        <p className="text-xl font-serif text-wedding-navy mb-8">
-          ¡Hola <span className="font-bold underline decoration-accent decoration-2">{name}</span>!<br />
-          <span className="text-sm font-sans mt-2 block text-gray-500">
-            Tienes <b>{passes}</b> {passes === 1 ? 'pase asignado' : 'pases asignados'}.
-          </span>
-        </p>
-
-        {!isSuccess ? (
-          <form onSubmit={handleSubmit} className="text-left font-sans">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-              <div>
-                <label className="block text-[11px] leading-normal font-bold uppercase tracking-widest text-text-secondary mb-2">Nombre registrado</label>
-                <input type="text" readOnly value={name} className="w-full border-b border-[#e5d5cb] py-2 focus:outline-none bg-transparent text-[16px] leading-normal font-normal pb-3 text-gray-500 cursor-not-allowed" />
-              </div>
-              <div>
-                <label className="block text-[11px] leading-normal font-bold uppercase tracking-widest text-text-secondary mb-2">¿Asistirás?</label>
-                <select
-                  value={status}
-                  onChange={(e) => setStatus(e.target.value)}
-                  className="w-full border-b border-[#e5d5cb] py-2 focus:outline-none focus:border-accent bg-transparent text-[16px] leading-normal font-normal text-text-secondary pb-3"
-                >
-                  {passes === 1 ? (
-                    <>
-                      <option>Sí, ahí estaré.</option>
-                      <option>Con dolor en mi corazón, no puedo.</option>
-                    </>
-                  ) : (
-                    <>
-                      <option>Sí, ahí estaremos.</option>
-                      <option>Sí iré, pero sol@.</option>
-                      <option>Con dolor en mi corazón, no podemos.</option>
-                    </>
-                  )}
-                </select>
-              </div>
-            </div>
-
-            {(passes > 1 && status === 'Sí, ahí estaremos.') && (
-              <div className="mb-10 w-full animate-fade-in opacity-100 transition-opacity duration-300">
-                <label className="block text-[11px] leading-normal font-bold uppercase tracking-widest text-text-secondary mb-4">Nombres de Acompañante</label>
-                <input
-                  type="text"
-                  value={extraInfo}
-                  onChange={(e) => setExtraInfo(e.target.value)}
-                  className="w-full bg-[#faf9f8] border border-gray-100 p-4 focus:outline-none focus:border-accent text-[14px] leading-[1.4] font-normal text-text-secondary"
-                  placeholder="Ej: Acompañante es Claudia..."
-                  required
-                />
-              </div>
-            )}
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full md:w-auto md:min-w-[350px] md:mx-auto py-5 px-10 mt-4 bg-accent hover:bg-accent-hover text-white font-sans text-[11px] leading-normal font-bold tracking-[4px] uppercase transition-colors shadow-sm disabled:opacity-50 flex justify-center items-center"
-            >
-              {isLoading ? 'Enviando...' : 'Confirmar y Enviar WhatsApp'}
-            </button>
-          </form>
-        ) : (
-          <div className="border border-green-200 bg-green-50 p-8 rounded-lg mt-8 flex flex-col items-center">
-            <p className="text-green-800 font-medium text-lg mb-2">¡Confirmación Guardada!</p>
-            <p className="text-green-700 text-[13px] mb-6 font-sans">
-              Tus datos se registraron correctamente en nuestra lista oficial. Para culminar el proceso, por favor presiona el botón para enviarnos tu confirmación por WhatsApp.
+        {!isConfirmed ? (
+          <>
+            <p className="font-sans text-[10px] sm:text-[11px] leading-[1.6] text-red-500 mb-6 tracking-[1px] sm:tracking-[2px] uppercase font-bold bg-red-50 py-3 px-4 rounded-sm inline-block max-w-full wrap-break-word border border-red-100">
+              Por favor, confirma antes del 15 de Septiembre
             </p>
-            {whatsappLink && (
-              <a
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex justify-center items-center gap-3 w-full max-w-xs py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white font-sans text-[11px] font-bold tracking-[3px] uppercase transition-colors rounded-sm shadow-md"
+
+            <p className="text-xl font-serif text-wedding-navy mb-8">
+              ¡Hola <span className="font-bold underline decoration-accent decoration-2">{name}</span>!<br />
+              <span className="text-sm font-sans mt-2 block text-gray-500">
+                Tienes <b>{passes}</b> {passes === 1 ? 'pase asignado' : 'pases asignados'}.
+              </span>
+            </p>
+
+            <form onSubmit={handleSubmit} className="text-left font-sans">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                <div>
+                  <label className="block text-[11px] leading-normal font-bold uppercase tracking-widest text-text-secondary mb-2">Nombre registrado</label>
+                  <input type="text" readOnly value={name} className="w-full border-b border-[#e5d5cb] py-2 focus:outline-none bg-transparent text-[16px] leading-normal font-normal pb-3 text-gray-500 cursor-not-allowed" />
+                </div>
+                <div>
+                  <label className="block text-[11px] leading-normal font-bold uppercase tracking-widest text-text-secondary mb-2">¿Asistirás?</label>
+                  <select
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
+                    className="w-full border-b border-[#e5d5cb] py-2 focus:outline-none focus:border-accent bg-transparent text-[16px] leading-normal font-normal text-text-secondary pb-3"
+                  >
+                    {passes === 1 ? (
+                      <>
+                        <option>Sí, ahí estaré.</option>
+                        <option>Con dolor en mi corazón, no puedo.</option>
+                      </>
+                    ) : (
+                      <>
+                        <option>Sí, ahí estaremos.</option>
+                        <option>Sí iré, pero sol@.</option>
+                        <option>Con dolor en mi corazón, no podemos.</option>
+                      </>
+                    )}
+                  </select>
+                </div>
+              </div>
+
+              {(passes > 1 && status === 'Sí, ahí estaremos.') && (
+                <div className="mb-10 w-full animate-fade-in opacity-100 transition-opacity duration-300">
+                  <label className="block text-[11px] leading-normal font-bold uppercase tracking-widest text-text-secondary mb-4">Nombres de Acompañante</label>
+                  <input
+                    type="text"
+                    value={extraInfo}
+                    onChange={(e) => setExtraInfo(e.target.value)}
+                    className="w-full bg-[#faf9f8] border border-gray-100 p-4 focus:outline-none focus:border-accent text-[14px] leading-[1.4] font-normal text-text-secondary"
+                    placeholder="Ej: Acompañante es Claudia..."
+                    required
+                  />
+                </div>
+              )}
+
+              {feedback && (
+                 <div className={`mb-6 p-4 rounded-sm text-[11px] font-bold tracking-[2px] uppercase text-center transition-all ${feedback.type === 'success' ? 'bg-green-50 text-green-700 border border-green-100' : 'bg-red-50 text-red-700 border border-red-100'}`}>
+                    {feedback.text}
+                 </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full md:w-auto md:min-w-[350px] md:mx-auto py-5 px-10 mt-4 bg-accent hover:bg-accent-hover text-white font-sans text-[11px] leading-normal font-bold tracking-[4px] uppercase transition-colors shadow-sm disabled:opacity-50 flex justify-center items-center"
               >
-                <FaWhatsapp className="text-lg" /> Ir a WhatsApp
-              </a>
-            )}
+                {isLoading ? 'Guardando...' : 'Confirmar y Enviar WhatsApp'}
+              </button>
+            </form>
+          </>
+        ) : (
+          <div className="mt-4 bg-green-50 border border-green-100 p-8 md:p-12 rounded-sm text-center animate-fade-in shadow-sm max-w-2xl mx-auto">
+            <p className="text-green-800 font-bold text-[12px] md:text-[14px] uppercase tracking-[3px] mb-6">Confirmación Registrada</p>
+            <p className="text-green-700 font-sans text-[14px] md:text-[16px] leading-relaxed max-w-lg mx-auto">
+              Tu confirmación fue realizada correctamente. Si en caso quieres modificar o volver a enviar tu confirmación comunícate al siguiente número:
+            </p>
+            <a 
+              href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER || "1234567890"}`} 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-6 text-[18px] md:text-[20px] font-bold tracking-widest text-accent hover:text-accent-hover transition-colors underline decoration-2 underline-offset-4"
+            >
+              {import.meta.env.VITE_WHATSAPP_NUMBER || "1234567890"}
+            </a>
           </div>
         )}
       </div>
