@@ -49,15 +49,14 @@ export default function GiftsSection() {
                   <div className="mb-6 w-full text-center flex flex-col items-center">
                      <img src="https://res.cloudinary.com/dlpxjxb9k/image/upload/f_auto,q_auto,w_400/v1777256669/yape-plin-logo_pujhgu.png" alt="Plin y Yape" className="h-15 lg:h-17.5 object-contain mb-4 mix-blend-multiply" />
 
-                     <div className="w-full flex flex-col sm:flex-row gap-3 mb-4">
-                        <div className="flex-1 bg-gray-50 py-3 px-2 rounded-sm border border-gray-100 flex flex-col justify-center">
-                           <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">PLIN</p>
-                           <p className="text-text-primary font-mono tracking-widest text-sm lg:text-base font-medium">{import.meta.env.VITE_BANK_PLIN || "991995630"}</p>
-                        </div>
-                        <div className="flex-1 bg-gray-50 py-3 px-2 rounded-sm border border-gray-100 flex flex-col justify-center">
-                           <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">YAPE</p>
-                           <p className="font-sans text-text-primary tracking-widest text-sm lg:text-base font-medium">{import.meta.env.VITE_BANK_YAPE || "917812695"}</p>
-                        </div>
+                     <div className="w-full bg-gray-50 py-3 px-2 rounded-sm mb-3 border border-gray-100 text-center">
+                        <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">PLIN</p>
+                        <p className="font-sans text-text-primary tracking-widest text-lg font-medium">{import.meta.env.VITE_BANK_PLIN || "991995630"}</p>
+                     </div>
+
+                     <div className="w-full bg-gray-50 py-3 px-2 rounded-sm mb-6 border border-gray-100 text-center">
+                        <p className="font-sans text-[9px] uppercase tracking-wider text-text-secondary mb-1">YAPE</p>
+                        <p className="font-sans text-text-primary tracking-widest text-lg font-medium">{import.meta.env.VITE_BANK_YAPE || "917812695"}</p>
                      </div>
 
                      <p className="font-sans text-[10px] uppercase tracking-wider text-text-secondary">Titulares: <span className="font-semibold text-text-primary mt-1 flex sm:inline justify-center">Claudia y Patrick</span></p>

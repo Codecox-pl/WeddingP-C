@@ -20,9 +20,9 @@ export default function FamilySection() {
               Padres del Novio
             </h3>
             <div className="space-y-4">
-              <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Nombre Padre Novio</p>
+              <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Walter Edde Luis Villanueva</p>
               <p className="font-serif text-2xl md:text-3xl text-text-primary italic">&amp;</p>
-              <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Nombre Madre Novio</p>
+              <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Madeleyne Grabiela Muñoz Obispo</p>
             </div>
           </div>
 
@@ -32,9 +32,9 @@ export default function FamilySection() {
               Padres de la Novia
             </h3>
             <div className="space-y-4">
-              <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Nombre Padre Novia</p>
+              <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Eduardo Javier Ruiz Canales</p>
               <p className="font-serif text-2xl md:text-3xl text-text-primary italic">&amp;</p>
-              <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Nombre Madre Novia</p>
+              <p className="font-serif text-2xl md:text-3xl text-text-primary italic"> Lidia Ruiz Bazalar</p>
             </div>
           </div>
         </div>
@@ -52,9 +52,9 @@ export default function FamilySection() {
             Nuestros Padrinos
           </h3>
           <div className="space-y-4">
-            <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Nombre Padrino</p>
+            <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Óscar Armando Quiñonez López</p>
             <p className="font-serif text-2xl md:text-3xl text-text-primary italic">&amp;</p>
-            <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Nombre Madrina</p>
+            <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Guadalupe Corina Ruiz Canales</p>
           </div>
         </div>
 
