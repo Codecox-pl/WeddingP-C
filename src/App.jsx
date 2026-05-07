@@ -17,29 +17,35 @@ export default function App() {
   };
 
   return (
-    <div className={`relative min-h-screen w-full bg-wedding-bg overflow-x-clip ${(!isAuthenticated || !isFinished) ? 'flex flex-col items-center justify-center h-screen' : ''}`}>
+    <div className="relative min-h-screen w-full bg-wedding-bg overflow-x-clip">
       {!isAuthenticated && (
-         <LoginModal onAuthenticated={handleAuthenticated} />
+         <div className="flex flex-col items-center justify-center h-screen">
+           <LoginModal onAuthenticated={handleAuthenticated} />
+         </div>
       )}
 
       {isAuthenticated && (
         <>
           <Navbar isVisible={isOpen} />
+          
+          {/* Renderizamos WeddingPage de fondo. Ocultamos el scroll mientras el sobre esté activo */}
+          <div className={!isFinished ? "h-screen overflow-hidden" : ""}>
+             <WeddingPage guestData={guestData} />
+          </div>
+
           <AnimatePresence onExitComplete={() => setIsFinished(true)}>
             {!isOpen && (
               <motion.div 
                 key="envelope-overlay"
                 initial={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
-                className="fixed inset-0 flex flex-col justify-center items-center z-50 bg-wedding-bg"
+                transition={{ duration: 0.9, ease: "easeInOut" }}
+                className="fixed inset-0 flex flex-col justify-center items-center z-50 bg-wedding-bg/95 backdrop-blur-sm"
               >
                  <Envelope onOpen={() => setIsOpen(true)} guestData={guestData} />
               </motion.div>
             )}
           </AnimatePresence>
-          
-          {isFinished && <WeddingPage guestData={guestData} />}
         </>
       )}
     </div>
