@@ -25,10 +25,9 @@ export default function LocationSection() {
       }
     } else if (type === 'waze') {
       if (location === 'ceremonia') {
-        // Si el usuario usa móvil y tiene la app, "waze://?q=" dispara la app directamente
-        url = "https://waze.com/ul?q=[DIRECCION_CEREMONIA]&navigate=yes";
+        url = "https://waze.com/ul/h6q0c40n0d";
       } else {
-        url = "https://waze.com/ul?q=[DIRECCION_RECEPCION]&navigate=yes";
+        url = "https://waze.com/ul/h6q0bf6ye7";
       }
     }
 
