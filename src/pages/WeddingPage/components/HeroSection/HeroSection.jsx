@@ -15,9 +15,9 @@ export default function HeroSection() {
   const eventDetails = {
     title: "Boda de Patrick y Claudia",
     description: "¡Te esperamos para celebrar este gran día con nosotros! Toda la logística la encuentras en la invitación virtual.",
-    location: "Hacienda Los Arcángeles, San Miguel de Allende",
+    location: "Iglesia Nuestra señora del carmen",
     startObj: new Date('2026-09-12T12:00:00'),
-    endObj: new Date('2026-09-13T02:00:00') // Fiesta hasta las 2 AM
+    endObj: new Date('2026-09-12T22:00:00')
   };
 
   return (
