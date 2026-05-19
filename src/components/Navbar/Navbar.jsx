@@ -20,6 +20,25 @@ export default function Navbar({ isVisible }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Escuchar cuando el usuario cambia de pestaña o minimiza la app para pausar/reanudar la música
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        if (audioRef.current && isPlaying) {
+          audioRef.current.pause();
+        }
+      } else {
+        if (audioRef.current && isPlaying) {
+          const playPromise = audioRef.current.play();
+          if (playPromise !== undefined) playPromise.catch(() => {});
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, [isPlaying]);
+
   // Iniciar la música imperativamente saltándose restricciones estrictas asíncronas
   useEffect(() => {
     if (isVisible && audioRef.current && !isPlaying) {
