@@ -38,12 +38,12 @@ export default function LocationSection() {
   return (
     <section className="bg-transparent py-12 md:py-20 px-6 sm:px-12 border-t border-b border-black/5" id="ubicacion">
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="font-serif mb-6 md:mb-10 text-text-primary text-[32px] leading-[1.15] font-[500] md:text-5xl lg:text-6xl flex flex-nowrap justify-center items-center gap-2 md:gap-5 text-center px-2 w-full">
+        <h2 className="font-serif mb-6 md:mb-10 text-text-primary text-[32px] leading-[1.15] font-medium md:text-5xl lg:text-6xl flex flex-nowrap justify-center items-center gap-2 md:gap-5 text-center px-2 w-full">
           <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 shrink-0" />
           <span className="leading-tight whitespace-normal min-w-0 text-center">Ubicación</span>
           <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 scale-x-[-1] shrink-0" />
         </h2>
-        <p className="font-sans text-[14px] leading-[1.4] font-[400] mb-16 text-text-secondary uppercase tracking-[2px] md:text-sm">
+        <p className="font-sans text-[14px] leading-[1.4] font-normal mb-16 text-text-secondary uppercase tracking-[2px] md:text-sm">
           Te esperamos en la provincia de Huaura. Consulta los mapas para llegar sin contratiempos.
         </p>
 
@@ -56,13 +56,13 @@ export default function LocationSection() {
               <PiChurch className="text-accent text-3xl" />
             </div>
 
-            <h4 className="font-sans text-[11px] leading-[1.5] font-[700] uppercase tracking-[4px] text-accent mb-3">Ceremonia Religiosa</h4>
-            <h3 className="font-serif text-[22px] leading-[1.25] font-[500] md:text-3xl text-text-primary tracking-wide mb-4">Iglesia Nuestra Señora del Carmen</h3>
+            <h4 className="font-sans text-[11px] leading-normal font-bold uppercase tracking-[4px] text-accent mb-3">Ceremonia Religiosa</h4>
+            <h3 className="font-serif text-[22px] leading-tight font-medium md:text-3xl text-text-primary tracking-wide mb-4">Iglesia Nuestra Señora del Carmen</h3>
 
             {/* Contenedor flexible para garantizar que ambas tarjetas midan exactamente igual sin importar el texto */}
             <div className="flex-1 flex flex-col justify-start items-center mt-2">
-              <p className="font-sans text-[16px] leading-[1.5] font-[400] md:text-lg text-text-secondary max-w-[280px]">
-                <strong className="text-text-primary font-[600] text-[16px] md:text-lg">Av. Panamericana Nte.</strong><br />
+              <p className="font-sans text-[16px] leading-normal font-normal md:text-lg text-text-secondary max-w-70">
+                <strong className="text-text-primary font-semibold text-[16px] md:text-lg">Av. Panamericana Nte.</strong><br />
                 Huaura 15138
               </p>
             </div>

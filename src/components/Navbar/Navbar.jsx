@@ -66,7 +66,6 @@ export default function Navbar({ isVisible }) {
   const navLinks = [
     { name: 'Nuestra Historia', href: '#historia' },
     { name: 'Ubicación', href: '#ubicacion' },
-    { name: 'Cronograma', href: '#cronograma' },
     { name: 'Regalos', href: '#regalos' },
     { name: 'Asistencia', href: '#asistencia' }
   ];

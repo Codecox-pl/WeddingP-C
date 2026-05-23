@@ -19,8 +19,8 @@ export default function GallerySection() {
     "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=600&q=80"
   ];
   
-  // Clonación masiva: Repetimos las fotos 20 veces (100 fotos) para lograr percepción infinita con arrastre manual
-  const infiniteFotos = Array(20).fill(baseFotos).flat();
+  // Clonación optimizada: 3 repeticiones (15 fotos) para sensación de scroll fluido sin sobrecargar el DOM
+  const infiniteFotos = Array(3).fill(baseFotos).flat();
 
   // Variables y estados para la manipulación DOM del carrusel interactivo manual
   const carouselRef = useRef(null);

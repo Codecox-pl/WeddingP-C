@@ -110,6 +110,16 @@ export default function RSVPSection({ guestData }) {
           <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 scale-x-[-1] shrink-0" />
         </h2>
 
+        {/* Banner informativo: Evento solo para adultos */}
+        <div className="bg-amber-50 border border-amber-200 p-4 md:p-5 rounded-sm mb-6 text-center max-w-xl mx-auto">
+          <p className="font-sans text-[11px] sm:text-[12px] text-amber-800 uppercase tracking-[2px] font-bold mb-1.5">
+            ✨ Evento exclusivo para adultos
+          </p>
+          <p className="font-sans text-[11px] sm:text-[12px] text-amber-700 leading-relaxed">
+            Con mucho cariño, hemos decidido que nuestra celebración sea exclusiva para mayores de 15 años. ¡Aprovechen la noche libre para bailar!
+          </p>
+        </div>
+
         {!isConfirmed ? (
           <>
             <p className="font-sans text-[10px] sm:text-[11px] leading-[1.6] text-red-500 mb-6 tracking-[1px] sm:tracking-[2px] uppercase font-bold bg-red-50 py-3 px-4 rounded-sm inline-block max-w-full wrap-break-word border border-red-100">
