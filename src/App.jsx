@@ -15,12 +15,13 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen w-full bg-wedding-bg overflow-x-clip">
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {!isAuthenticated && (
           <motion.div
             key="landing"
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="absolute top-0 left-0 w-full min-h-screen"
+            exit={{ x: '-100%' }}
+            transition={{ type: 'tween', ease: 'easeInOut', duration: 0.9 }}
           >
             <LandingPage onAuthenticated={handleAuthenticated} />
           </motion.div>
@@ -29,9 +30,10 @@ export default function App() {
         {isAuthenticated && (
           <motion.div
             key="invitation"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
+            className="absolute top-0 left-0 w-full min-h-screen"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            transition={{ type: 'tween', ease: 'easeInOut', duration: 0.7 }}
           >
             <Navbar isVisible={true} />
             <WeddingPage guestData={guestData} />
