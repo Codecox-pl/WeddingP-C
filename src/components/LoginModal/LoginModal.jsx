@@ -80,7 +80,8 @@ export default function LoginModal({ onAuthenticated }) {
                   setCode(cleanedValue);
                   if (error) setError('');
                 }}
-                maxLength={6}
+                minLength={6}
+                maxLength={8}
                 placeholder="Ej. AA2026"
                 className="w-full text-center text-[16px] font-sans font-medium tracking-[3px] border-b border-[#e5d5cb] py-3 focus:outline-none focus:border-accent bg-transparent text-text-secondary uppercase"
                 disabled={isLoading}

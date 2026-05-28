@@ -28,12 +28,12 @@ export default function DressCodeSection() {
                    <span className="font-sans text-[9px] uppercase tracking-wider text-text-secondary">Blanco</span>
                 </div>
                 <div className="flex flex-col items-center gap-3">
-                   <div className="w-14 h-14 rounded-full bg-[#fdf5e6] border border-gray-200 shadow-inner"></div>
-                   <span className="font-sans text-[9px] uppercase tracking-wider text-text-secondary">Crema / Perla</span>
+                   <div className="w-14 h-14 rounded-full bg-[#fffff0] border border-gray-200 shadow-inner"></div>
+                   <span className="font-sans text-[9px] uppercase tracking-wider text-text-secondary">Ivory</span>
                 </div>
                 <div className="flex flex-col items-center gap-3">
-                   <div className="w-14 h-14 rounded-full bg-[#f5e6d3] border border-gray-200 shadow-inner"></div>
-                   <span className="font-sans text-[9px] uppercase tracking-wider text-text-secondary">Beige Clarito</span>
+                   <div className="w-14 h-14 rounded-full bg-[#89c1df] border border-gray-200 shadow-inner"></div>
+                   <span className="font-sans text-[9px] uppercase tracking-wider text-text-secondary">Celeste</span>
                 </div>
              </div>
              

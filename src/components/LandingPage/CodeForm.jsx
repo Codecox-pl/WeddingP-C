@@ -61,7 +61,8 @@ export default function CodeForm({ onAuthenticated }) {
         type="text"
         value={code}
         onChange={handleCodeChange}
-        maxLength={6}
+        minLength={6}
+        maxLength={8}
         placeholder="Ej. AA2026"
         className="w-full text-center text-[18px] font-sans font-medium tracking-[5px] bg-white/10 backdrop-blur-sm border border-white/25 py-4 px-4 focus:outline-none focus:border-white/60 text-white placeholder-white/30 uppercase transition-all duration-300 rounded-sm"
         disabled={isLoading}

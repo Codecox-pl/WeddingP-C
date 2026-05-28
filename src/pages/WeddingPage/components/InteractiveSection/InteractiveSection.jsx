@@ -52,7 +52,7 @@ export default function InteractiveSection({ guestData }) {
    };
 
    return (
-      <section className="bg-[#fcfbf9] py-24 px-6 border-t border-black/5">
+      <section className="bg-transparent py-24 px-6 border-t border-black/5">
          <div className="max-w-2xl mx-auto">
 
             {/* Libro de Visitas Digital */}
