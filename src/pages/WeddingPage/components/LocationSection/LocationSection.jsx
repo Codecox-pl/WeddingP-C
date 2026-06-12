@@ -58,6 +58,7 @@ export default function LocationSection() {
 
             <h4 className="font-sans text-[11px] leading-normal font-bold uppercase tracking-[4px] text-accent mb-3">Ceremonia Religiosa</h4>
             <h3 className="font-serif text-[22px] leading-tight font-medium md:text-3xl text-text-primary tracking-wide mb-4">Iglesia Nuestra Señora del Carmen</h3>
+            <h3 className="font-serif text-[22px] leading-tight font-semibold md:text-3xl text-text-primary tracking-wide mb-4">Hora: 12:00 pm</h3>
 
             {/* Contenedor flexible para garantizar que ambas tarjetas midan exactamente igual sin importar el texto */}
             <div className="flex-1 flex flex-col justify-start items-center mt-2">
@@ -92,6 +93,7 @@ export default function LocationSection() {
 
             <h4 className="font-sans text-[11px] leading-normal font-bold uppercase tracking-[4px] text-accent mb-3">Recepción</h4>
             <h3 className="font-serif text-[22px] leading-tight font-medium md:text-3xl text-text-primary tracking-wide mb-4">La Estancia</h3>
+            <h3 className="font-serif text-[22px] leading-tight font-semibold md:text-3xl text-text-primary tracking-wide mb-4">Hora: 2:00 pm</h3>
             <div className="flex-1 flex flex-col justify-start items-center mt-2">
               <p className="font-sans text-[16px] leading-normal font-normal md:text-lg text-text-secondary max-w-70">
                 <strong className="text-text-primary font-semibold text-[16px] md:text-lg">El Milagro 540</strong><br />

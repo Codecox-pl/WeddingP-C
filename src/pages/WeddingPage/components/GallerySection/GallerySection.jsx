@@ -12,13 +12,13 @@ import { GiPenguin } from 'react-icons/gi';
 export default function GallerySection() {
   // Arreglo centralizado de imágenes base de la galería (5 imágenes únicas)
   const baseFotos = [
-    "https://images.unsplash.com/photo-1549416878-af0ac6dcbae5?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1583939008064-92794eb84f09?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1623583155799-a9a2aedebfc1?auto=format&fit=crop&w=600&q=80",
-    "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=600&q=80"
+    "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781236462/foto-g-3_ak0mhr.jpg",
+    "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781236461/foto-g-1_bqh8x9.jpg",
+    "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781236461/foto-g-5_ikuyd8.jpg",
+    "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781236462/foto-g-2_yqnny7.jpg",
+    "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781236461/foto-g-4_mqi0dc.jpg",
   ];
-  
+
   // Clonación optimizada: 3 repeticiones (15 fotos) para sensación de scroll fluido sin sobrecargar el DOM
   const infiniteFotos = Array(3).fill(baseFotos).flat();
 
@@ -75,11 +75,11 @@ export default function GallerySection() {
 
   return (
     <section className="py-16 md:py-24 bg-[#fcfbf9] border-t border-black/5 overflow-hidden" id="galeria">
-      <h2 className="font-serif mb-8 md:mb-16 text-text-primary text-[32px] leading-[1.15] font-[500] md:text-5xl lg:text-6xl flex flex-nowrap justify-center items-center gap-2 md:gap-5 text-center px-2 w-full">
-          <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 shrink-0" />
-          <span className="leading-tight whitespace-normal min-w-0 text-center">Galeria</span>
-          <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 scale-x-[-1] shrink-0" />
-        </h2>
+      <h2 className="font-serif mb-8 md:mb-16 text-text-primary text-[32px] leading-[1.15] font-medium md:text-5xl lg:text-6xl flex flex-nowrap justify-center items-center gap-2 md:gap-5 text-center px-2 w-full">
+        <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 shrink-0" />
+        <span className="leading-tight whitespace-normal min-w-0 text-center">Galeria</span>
+        <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 scale-x-[-1] shrink-0" />
+      </h2>
 
       <div className="relative">
         <div
@@ -98,7 +98,7 @@ export default function GallerySection() {
               key={index}
               // Usamos pointer-events-none internamente para que la API del Navegador no intente 
               // iniciar una descarga/arrastre de "imagen fantasma HTML nativa" robando nuestro evento MouseMove
-              className="min-w-[70vw] md:min-w-[450px] aspect-[4/5] snap-center shrink-0"
+              className="min-w-[70vw] md:min-w-112.5 aspect-4/5 snap-center shrink-0"
             >
               <div
                 className="w-full h-full bg-cover bg-center shadow-lg border-8 border-white pointer-events-none select-none"
@@ -109,7 +109,7 @@ export default function GallerySection() {
         </div>
 
         {/* Caption decorativo instruccional */}
-        <p className="text-center font-sans text-[11px] leading-[1.5] font-[700] text-accent uppercase tracking-[4px] mt-4 flex justify-center items-center gap-2 select-none md:text-xs">
+        <p className="text-center font-sans text-[11px] leading-normal font-bold text-accent uppercase tracking-[4px] mt-4 flex justify-center items-center gap-2 select-none md:text-xs">
           <span className="text-xl">←</span> Arrastra para explorar más <span className="text-xl">→</span>
         </p>
       </div>

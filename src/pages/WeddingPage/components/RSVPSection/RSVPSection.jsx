@@ -24,7 +24,7 @@ export default function RSVPSection({ guestData }) {
     // Si el backend nos envía el campo status (incluso si está vacío)
     if (guestData && 'status' in guestData) {
       const backendStatus = guestData.status || '';
-      
+
       if (backendStatus.trim() !== '') {
         // Ya está confirmado en el Excel
         setIsConfirmed(true);
@@ -54,6 +54,16 @@ export default function RSVPSection({ guestData }) {
     const showExtraInfo = passes > 1 && status === 'Sí, ahí estaremos.';
     const submitExtraInfo = showExtraInfo ? extraInfo : '';
 
+    // Calcular pases restantes
+    let usedPasses = 0;
+    if (status === 'Sí, ahí estaré.' || status === 'Sí iré, pero sol@.') {
+      usedPasses = 1;
+    } else if (status === 'Sí, ahí estaremos.') {
+      usedPasses = passes;
+    } // Si no van ("no puedo"), usedPasses = 0
+
+    const remainingPasses = passes - usedPasses;
+
     try {
       const API_URL = import.meta.env.VITE_SCRIPT_URL;
 
@@ -67,6 +77,7 @@ export default function RSVPSection({ guestData }) {
             row: row,
             status: status,
             extraInfo: submitExtraInfo,
+            remainingPasses: remainingPasses
           })
         });
       } else {
@@ -84,7 +95,10 @@ export default function RSVPSection({ guestData }) {
 
       // Redirigir a WhatsApp
       const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "1234567890";
-      const message = `Hola, soy ${name}.\nQuiero confirmar mi respuesta de asistencia:\n*${status}*\nPases asignados: ${passes}${showExtraInfo && submitExtraInfo ? `\nAcompañantes: ${submitExtraInfo}` : ''}`;
+      let message = `Hola, soy ${name}.\nQuiero confirmar mi respuesta de asistencia:\n*${status}*\nPases asignados: ${passes}`;
+      if (showExtraInfo && submitExtraInfo) {
+        message += `\nAcompañantes: ${submitExtraInfo}`;
+      }
 
       const generatedUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
@@ -177,15 +191,15 @@ export default function RSVPSection({ guestData }) {
               )}
 
               {feedback && (
-                 <div className={`mb-6 p-4 rounded-sm text-[11px] font-bold tracking-[2px] uppercase text-center transition-all ${feedback.type === 'success' ? 'bg-green-50 text-green-700 border border-green-100' : 'bg-red-50 text-red-700 border border-red-100'}`}>
-                    {feedback.text}
-                 </div>
+                <div className={`mb-6 p-4 rounded-sm text-[11px] font-bold tracking-[2px] uppercase text-center transition-all ${feedback.type === 'success' ? 'bg-green-50 text-green-700 border border-green-100' : 'bg-red-50 text-red-700 border border-red-100'}`}>
+                  {feedback.text}
+                </div>
               )}
 
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full md:w-auto md:min-w-[350px] md:mx-auto py-5 px-10 mt-4 bg-accent hover:bg-accent-hover text-white font-sans text-[11px] leading-normal font-bold tracking-[4px] uppercase transition-colors shadow-sm disabled:opacity-50 flex justify-center items-center"
+                className="w-full md:w-auto md:min-w-87.5 md:mx-auto py-5 px-10 mt-4 bg-accent hover:bg-accent-hover text-white font-sans text-[11px] leading-normal font-bold tracking-[4px] uppercase transition-colors shadow-sm disabled:opacity-50 flex justify-center items-center"
               >
                 {isLoading ? 'Guardando...' : 'Confirmar y Enviar WhatsApp'}
               </button>
@@ -197,8 +211,8 @@ export default function RSVPSection({ guestData }) {
             <p className="text-green-700 font-sans text-[14px] md:text-[16px] leading-relaxed max-w-lg mx-auto">
               Tu confirmación fue realizada correctamente. Si en caso quieres modificar o volver a enviar tu confirmación comunícate al siguiente número:
             </p>
-            <a 
-              href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER || "1234567890"}`} 
+            <a
+              href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER || "1234567890"}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block mt-6 text-[18px] md:text-[20px] font-bold tracking-widest text-accent hover:text-accent-hover transition-colors underline decoration-2 underline-offset-4"
