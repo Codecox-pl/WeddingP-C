@@ -95,7 +95,7 @@ export default function RSVPSection({ guestData }) {
 
       // Redirigir a WhatsApp
       const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "1234567890";
-      let message = `Hola, soy ${name}.\nQuiero confirmar mi respuesta de asistencia:\n*${status}*\nPases asignados: ${passes}`;
+      let message = `Hola, soy ${name}.\nQuiero confirmar mi respuesta de asistencia:\n*${status}*`;
       if (showExtraInfo && submitExtraInfo) {
         message += `\nAcompañantes: ${submitExtraInfo}`;
       }
@@ -141,10 +141,7 @@ export default function RSVPSection({ guestData }) {
             </p>
 
             <p className="text-xl font-serif text-wedding-navy mb-8">
-              ¡Hola <span className="font-bold underline decoration-accent decoration-2">{name}</span>!<br />
-              <span className="text-sm font-sans mt-2 block text-gray-500">
-                Tienes <b>{passes}</b> {passes === 1 ? 'pase asignado' : 'pases asignados'}.
-              </span>
+              ¡Hola <span className="font-bold underline decoration-accent decoration-2">{name}</span>!
             </p>
 
             <form onSubmit={handleSubmit} className="text-left font-sans">
