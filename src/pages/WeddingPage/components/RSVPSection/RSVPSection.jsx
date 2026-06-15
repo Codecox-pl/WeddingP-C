@@ -137,11 +137,14 @@ export default function RSVPSection({ guestData }) {
         {!isConfirmed ? (
           <>
             <p className="font-sans text-[10px] sm:text-[11px] leading-[1.6] text-red-500 mb-6 tracking-[1px] sm:tracking-[2px] uppercase font-bold bg-red-50 py-3 px-4 rounded-sm inline-block max-w-full wrap-break-word border border-red-100">
-              Por favor, confirma antes del 15 de Septiembre
+              Por favor, confirma antes del 15 de Agosto
             </p>
 
             <p className="text-xl font-serif text-wedding-navy mb-8">
-              ¡Hola <span className="font-bold underline decoration-accent decoration-2">{name}</span>!
+              ¡Hola <span className="font-bold underline decoration-accent decoration-2">{name}</span>!<br />
+              <span className="text-sm font-sans mt-2 block text-gray-500">
+                Tienes <b>{passes}</b> {passes === 1 ? 'pase asignado' : 'pases asignados'}.
+              </span>
             </p>
 
             <form onSubmit={handleSubmit} className="text-left font-sans">

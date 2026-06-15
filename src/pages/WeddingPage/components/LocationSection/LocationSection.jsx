@@ -19,9 +19,9 @@ export default function LocationSection() {
     // Algoritmo para ensamblar la URL correcta del proveedor de mapas y ubicación
     if (type === 'google') {
       if (location === 'ceremonia') {
-        url = "https://www.google.com/maps/search/?api=1&query=[DIRECCION_CEREMONIA]";
+        url = "https://maps.app.goo.gl/dQLx9mZUUjurUF7m7";
       } else {
-        url = "https://maps.app.goo.gl/[LINK_RECEPCION]";
+        url = "https://maps.app.goo.gl/GLZoFbWYzf9ApooQA";
       }
     } else if (type === 'waze') {
       if (location === 'ceremonia') {

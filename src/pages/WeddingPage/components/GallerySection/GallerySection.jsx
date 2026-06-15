@@ -15,8 +15,10 @@ export default function GallerySection() {
     "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781236462/foto-g-3_ak0mhr.jpg",
     "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781236461/foto-g-1_bqh8x9.jpg",
     "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781236461/foto-g-5_ikuyd8.jpg",
-    "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781236462/foto-g-2_yqnny7.jpg",
-    "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781236461/foto-g-4_mqi0dc.jpg",
+    "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781503004/foto-g-6.jpg",
+    "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781503004/foto-g-7.jpg",
+    "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781503004/foto-g-8.jpg",
+    "https://res.cloudinary.com/dlpxjxb9k/image/upload/c_scale,w_1200,q_auto:best,f_auto/v1781503005/foto-g-9.jpg"
   ];
 
   // Clonación optimizada: 3 repeticiones (15 fotos) para sensación de scroll fluido sin sobrecargar el DOM
