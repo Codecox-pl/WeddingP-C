@@ -43,7 +43,7 @@ export default function LocationSection() {
           <span className="leading-tight whitespace-normal min-w-0 text-center">Ubicación</span>
           <GiPenguin className="text-[32px] md:text-5xl lg:text-6xl text-accent opacity-80 scale-x-[-1] shrink-0" />
         </h2>
-        <p className="font-sans text-[14px] leading-[1.4] font-normal mb-16 text-text-secondary uppercase tracking-[2px] md:text-sm">
+        <p className="font-sans text-[13px] leading-relaxed font-normal mb-16 text-text-secondary max-w-2xl mx-auto uppercase tracking-wide md:text-sm">
           Te esperamos en la provincia de Huaura. Consulta los mapas para llegar sin contratiempos.
         </p>
 
@@ -57,13 +57,13 @@ export default function LocationSection() {
             </div>
 
             <h4 className="font-sans text-[11px] leading-normal font-bold uppercase tracking-[4px] text-accent mb-3">Ceremonia Religiosa</h4>
-            <h3 className="font-serif text-[22px] leading-tight font-medium md:text-3xl text-text-primary tracking-wide mb-4">Iglesia Nuestra Señora del Carmen</h3>
-            <h3 className="font-serif text-[22px] leading-tight font-semibold md:text-3xl text-text-primary tracking-wide mb-4">Hora: 11:00 am</h3>
+            <h3 className="font-sans text-[18px] leading-tight font-semibold md:text-[22px] text-text-primary mb-2">Iglesia Nuestra Señora del Carmen</h3>
+            <h3 className="font-sans text-[15px] leading-tight font-normal md:text-[16px] text-text-primary mb-4">Hora: 11:00 am</h3>
 
             {/* Contenedor flexible para garantizar que ambas tarjetas midan exactamente igual sin importar el texto */}
             <div className="flex-1 flex flex-col justify-start items-center mt-2">
               <p className="font-sans text-[16px] leading-normal font-normal md:text-lg text-text-secondary max-w-70">
-                <strong className="text-text-primary font-semibold text-[16px] md:text-lg">Av. Panamericana Nte.</strong><br />
+                <span className="text-text-primary">Av. Panamericana Nte.</span><br />
                 Huaura 15138
               </p>
             </div>
@@ -92,11 +92,11 @@ export default function LocationSection() {
             </div>
 
             <h4 className="font-sans text-[11px] leading-normal font-bold uppercase tracking-[4px] text-accent mb-3">Recepción</h4>
-            <h3 className="font-serif text-[22px] leading-tight font-medium md:text-3xl text-text-primary tracking-wide mb-4">La Estancia</h3>
-            <h3 className="font-serif text-[22px] leading-tight font-semibold md:text-3xl text-text-primary tracking-wide mb-4">Hora: 2:00 pm</h3>
+            <h3 className="font-sans text-[18px] leading-tight font-semibold md:text-[22px] text-text-primary mb-2">La Estancia</h3>
+            <h3 className="font-sans text-[15px] leading-tight font-normal md:text-[16px] text-text-primary mb-4">Hora: 2:00 pm</h3>
             <div className="flex-1 flex flex-col justify-start items-center mt-2">
               <p className="font-sans text-[16px] leading-normal font-normal md:text-lg text-text-secondary max-w-70">
-                <strong className="text-text-primary font-semibold text-[16px] md:text-lg">El Milagro 540</strong><br />
+                <span className="text-text-primary">El Milagro 540</span><br />
                 Santa María 15137
               </p>
             </div>

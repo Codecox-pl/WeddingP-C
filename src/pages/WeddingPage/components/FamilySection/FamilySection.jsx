@@ -22,7 +22,7 @@ export default function FamilySection() {
             <div className="space-y-4">
               <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Walter Edde Luis Villanueva</p>
               <p className="font-serif text-2xl md:text-3xl text-text-primary italic">&amp;</p>
-              <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Madeleyne Grabiela Muñoz Obispo</p>
+              <p className="font-serif text-2xl md:text-3xl text-text-primary italic">Madeleyne Graviela Muñoz Obispo</p>
             </div>
           </div>
 
