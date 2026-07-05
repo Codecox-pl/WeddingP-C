@@ -3,3 +3,9 @@ dist/
 # Eliminamos .env de gitignore temporalmente para Cloudflare
 !.env.example
 .DS_Store
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
