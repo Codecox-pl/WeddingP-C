@@ -5,7 +5,6 @@
  */
 import React, { useState, useEffect } from 'react';
 import { GiPenguin } from 'react-icons/gi';
-import { FaWhatsapp } from 'react-icons/fa';
 
 export default function RSVPSection({ guestData }) {
   // Fallback seguro si no hay dato
@@ -91,19 +90,7 @@ export default function RSVPSection({ guestData }) {
       }
       setIsConfirmed(true);
 
-      setFeedback({ type: 'success', text: '¡Datos guardados! Redirigiendo a WhatsApp...' });
-
-      // Redirigir a WhatsApp
-      const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "1234567890";
-      let message = `Hola, soy ${name}.\nQuiero confirmar mi respuesta de asistencia:\n*${status}*`;
-      if (showExtraInfo && submitExtraInfo) {
-        message += `\nAcompañantes: ${submitExtraInfo}`;
-      }
-
-      const generatedUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-      // Intento de apertura automática (suele bloquearse en Safari/iPhones por ser asíncrono)
-      window.open(generatedUrl, '_blank');
+      setFeedback({ type: 'success', text: '¡Datos guardados correctamente!' });
 
     } catch (error) {
       console.error(error);
@@ -201,7 +188,7 @@ export default function RSVPSection({ guestData }) {
                 disabled={isLoading}
                 className="w-full md:w-auto md:min-w-87.5 md:mx-auto py-5 px-10 mt-4 bg-accent hover:bg-accent-hover text-white font-sans text-[11px] leading-normal font-bold tracking-[4px] uppercase transition-colors shadow-sm disabled:opacity-50 flex justify-center items-center"
               >
-                {isLoading ? 'Guardando...' : 'Confirmar y Enviar WhatsApp'}
+                {isLoading ? 'Guardando...' : 'Confirmar Asistencia'}
               </button>
             </form>
           </>
@@ -212,7 +199,7 @@ export default function RSVPSection({ guestData }) {
               Tu confirmación fue realizada correctamente. Si en caso quieres modificar o volver a enviar tu confirmación comunícate al siguiente número:
             </p>
             <a
-              href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER || "1234567890"}`}
+              href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER || "1234567890"}?text=${encodeURIComponent(`Hola, soy ${name}, tengo una consulta.`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block mt-6 text-[18px] md:text-[20px] font-bold tracking-widest text-accent hover:text-accent-hover transition-colors underline decoration-2 underline-offset-4"
